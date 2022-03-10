@@ -19,4 +19,8 @@ class Country extends Model
         'phone_code',
     ];
 
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }
