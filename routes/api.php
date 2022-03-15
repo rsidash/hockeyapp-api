@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\CityController;
 use App\Http\Controllers\Api\v1\CountryController;
 use App\Http\Controllers\Api\v1\IceRinkController;
 use App\Http\Controllers\Api\v1\ImageController;
+use App\Http\Controllers\Api\v1\TeamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +27,6 @@ Route::prefix('v1')->group(function() {
     Route::apiResource('countries', CountryController::class);
     Route::apiResource('cities', CityController::class);
     Route::apiResource('ice-rinks', IceRinkController::class);
+    Route::apiResource('teams', TeamController::class);
     Route::apiResource('images', ImageController::class)->only(['store', 'destroy']);
 });
