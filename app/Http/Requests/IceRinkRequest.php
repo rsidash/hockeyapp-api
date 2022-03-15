@@ -25,7 +25,6 @@ class IceRinkRequest extends FormRequest
     public function rules()
     {
         return [
-//            'name' => 'required|string|max:100|unique:ice_rinks,name,' . $this->ice_rink,
             'name' => [
                 'required',
                 'string',

@@ -22,7 +22,7 @@ class IceRinkResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'image' => new ImageResource($this->image),
-//            'owner' => new UserResource($this->owner),
+            'owner' => $this->owner,
             'city' => new CityResource($this->city),
         ];
     }
