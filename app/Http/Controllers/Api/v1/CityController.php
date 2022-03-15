@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Requests\CityRequests\CityIndexRequest;
 use App\Http\Requests\CityRequests\CityStoreRequest;
 use App\Http\Requests\CityRequests\CityUpdateRequest;
 use App\Http\Resources\CityResource;
 use App\Models\City;
+use App\Services\v1\QueryFilterService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -14,11 +16,16 @@ class CityController
     /**
      * Display a listing of the resource.
      *
+     * @param CityIndexRequest $request
      * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(CityIndexRequest $request)
     {
-        return CityResource::collection(City::orderBy('name_en')->paginate());
+//        return CityResource::collection(City::orderBy('name_en')->paginate());
+        $model = new City();
+        $filter = new QueryFilterService();
+
+        return CityResource::collection($filter->applyFilter($model, $request->validated()));
     }
 
     /**
